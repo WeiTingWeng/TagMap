@@ -7,9 +7,12 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * <p>TagMap is a Key-Value map allows user set multiple tag into each key.
- * <p>User can quickly find values associates tag by using {@link #getByTag}
- * <p>Created by Tim Weng on 14/05/2017.
+ * <p>
+ * TagMap is a Key-Value map allows user set multiple tag into each key.
+ * <p>
+ * User can quickly find values associates tag by using {@link #getByTag}
+ * <p>
+ * Created by Tim Weng on 14/05/2017.
  */
 
 public class TagMap<K, T, V> {
@@ -56,7 +59,12 @@ public class TagMap<K, T, V> {
      *         contains no mapping for the tag.
      */
     public Set<V> getByTag(T tag) {
-        return mTag2ValuesMap.get(tag).keySet();
+        Map<V, Integer> valueMap = mTag2ValuesMap.get(tag);
+        if (valueMap != null) {
+            return mTag2ValuesMap.get(tag).keySet();
+        } else {
+            return null;
+        }
     }
 
     /**
